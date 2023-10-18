@@ -1,0 +1,255 @@
+Q1.
+
+
+package demo1;
+interface First
+{
+	void Disp1();
+}
+class Second
+{
+	void fun1()
+	{
+		System.out.println("in sample disp");
+	}
+}
+public class hashmap
+{
+	public static void main(String[] args)
+	{
+		Second s1=new Second();
+		
+		//using lamda
+		First ref=()->{s1.fun1();};
+		System.out.println("implimnetation of classname"+ref.getClass().getName());
+		ref.Disp1();
+		System.out.println("-------------------------------------------");
+		
+		First ref2=s1::fun1;
+		System.out.println("implimnetation of classname"+ref2.getClass().getName());
+		
+		ref2.Disp1();
+		
+		
+		
+	}
+}
+
+-------------------------------------------------------------------------------------------------
+Q2.
+package demo1;
+interface Third
+{
+	void show(int num);
+}
+class Sample
+{
+	void disp(int num)
+	{
+		System.out.println("hello");
+	}
+}
+
+public class hashmap
+{
+	public static void main(String[] args)
+	{
+		Sample s=new Sample();
+		
+		Third ref=(num)->{s.disp(num);};
+		ref.show(500);
+		System.out.println("-------------------------------------------------------");
+		
+		Third ref2=s::disp;
+		ref2.show(500);
+	}
+}
+
+
+
+----------------------------------------------------------------------------------------------
+Q3.
+
+package demo1;
+interface fifth
+{
+	int add(int a,int b);
+}
+
+class Math1
+{
+  int calc(int a,int b)
+  {
+	  return (a+b);
+  }
+  
+}
+
+public class hashmap
+{
+	public static void main(String[] args)
+	{
+		Math1 s=new Math1();
+		
+		fifth ref=(a,b)->{return s.calc(a,b);};
+		System.out.println(ref.add(1, 2));
+		
+		
+		fifth ref2=s::calc;
+		System.out.println(ref2.add(1,2));
+		
+	}
+}    
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+Q4.
+
+package demo1;
+interface Sixth
+{
+	void disp5();
+}
+class Sample
+{
+	static void fun1()
+	{
+		System.out.println("static method nvoke");
+	}
+}
+
+
+public class hashmap
+{
+	public static void main(String[] args)
+	{
+		Sixth ref=()->{Sample.fun1();};
+		ref.disp5();
+		
+		System.out.println("hhhhhhhhhhhhhhhhh");
+		
+		Sixth ref2=Sample::fun1;
+		ref2.disp5();
+	}
+}
+
+
+
+============================================================================================
+
+Q5.
+
+package demo1;
+interface Emp
+{
+	void show();
+}
+class Myclass
+{
+	public Myclass()
+	{
+		System.out.println("default constructor");
+	}
+}
+
+public class hashmap
+{
+	public static void main(String[] args)
+	{
+		
+		
+		Emp ref=Myclass::new;
+		ref.show();
+	}
+}
+
+
+-------------------------------------------------------------------------------------------Q6.
+
+package demo1;
+interface Seventh
+{
+	void fun(int k);
+}
+class Sample
+{
+	public Sample(int k)
+	{
+		System.out.println("defult constructor");
+	}
+}
+
+public class hashmap
+{
+	public static void main(String[] args)
+	{
+		
+	  
+	
+		Seventh ref=Sample::new;
+		ref.fun(200);
+		
+	}
+}
+
+----------------------------------------------------------------------------------------------
+
+Q7.
+
+
+
+package demo1;
+class Student
+{
+	String name;
+	int age;
+	
+	public Student(String name,int age)
+	{
+		System.out.println("Student default constructr");
+	}
+	
+	public void setname(String name)
+	{
+		name=name;
+	}
+	
+	public String getname()
+	{
+		return  name;
+	}
+	
+	public void setage(int age)
+	{
+		this.age=age;
+	}
+	public int getage() 
+	{
+		return age;
+	}
+	public String toString()
+	{
+		return "Strng["+name+","+age+"]";
+	}
+	
+	
+}
+
+interface MyInterface
+{
+	void show(Student ref);
+}
+
+
+public class hashmap
+{
+	public static void main(String[]args)
+	{
+		Student s1=new Student("Vijay",20);
+		MyInterface ref=System.out::println;
+		ref.show(s1);
+	}
+}
+
+
